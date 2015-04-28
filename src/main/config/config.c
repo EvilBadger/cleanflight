@@ -517,8 +517,8 @@ static void resetConf(void)
     masterConfig.blackbox_rate_denom = 1;
 #endif
 
-    // alternative defaults settings for ALIENWIIF1 and ALIENWIIF3 targets
-#ifdef ALIENWII32
+    // alternative defaults settings for ALIENWIIF1, ALIENWIIF3 and BRUSHEDFC targets 
+#if defined  (ALIENWII32) | (BRUSHEDFC)
     featureSet(FEATURE_RX_SERIAL);
     featureSet(FEATURE_MOTOR_STOP);
     featureSet(FEATURE_FAILSAFE);
@@ -531,7 +531,7 @@ static void resetConf(void)
     masterConfig.rxConfig.serialrx_provider = 1;
     masterConfig.rxConfig.spektrum_sat_bind = 5;
     masterConfig.escAndServoConfig.minthrottle = 1000;
-#ifdef BRUSHEDFC
+#ifdef BRUSHED_MOTORS
     masterConfig.escAndServoConfig.maxthrottle = 2500;
 #else
     masterConfig.escAndServoConfig.maxthrottle = 2000;
