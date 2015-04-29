@@ -518,7 +518,7 @@ static void resetConf(void)
 #endif
 
     // alternative defaults settings for ALIENWIIF1, ALIENWIIF3 and BRUSHEDFC targets 
-#if defined  (ALIENWII32) | (BRUSHEDFC)
+#if defined(ALIENWII32) | defined(BRUSHEDFC)
     featureSet(FEATURE_RX_SERIAL);
     featureSet(FEATURE_MOTOR_STOP);
     featureSet(FEATURE_FAILSAFE);

@@ -20,7 +20,7 @@
 #define TARGET_BOARD_IDENTIFIER "AWF1" // AlienWii32 F1.
 #define USE_HARDWARE_REVISION_DETECTION
 
-#define BRUSHEDFC
+//#define BRUSHEDFC
 
 #define BOARD_HAS_VOLTAGE_DIVIDER
 
@@ -171,7 +171,6 @@
 #define BIND_PIN   Pin_3
 
 // alternative defaults for AlienWii32 F1 target
-#undef TARGET_BOARD_IDENTIFIER
 #define HARDWARE_BIND_PLUG
 
 // Hardware bind plug at PB5 (Pin 41)
