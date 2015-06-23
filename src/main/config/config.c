@@ -514,14 +514,15 @@ static void resetConf(void)
     masterConfig.blackbox_rate_denom = 1;
 #endif
 
-    // alternative defaults settings for ALIENWIIF1 and ALIENWIIF3 targets
+    // alternative defaults settings for ALIENWIIF1, ALIENWIIF3 and MFBFCV1 targets
+#ifdef MFBFCV1
+    masterConfig.batteryConfig.vbatscale = 20;
+#endif	
 #ifdef ALIENWII32
     featureSet(FEATURE_RX_SERIAL);
     featureSet(FEATURE_MOTOR_STOP);
 #ifdef ALIENWIIF3
     masterConfig.serialConfig.portConfigs[2].functionMask = FUNCTION_RX_SERIAL;
-    masterConfig.batteryConfig.vbatscale = 20;
-#ifdef MFBFCV1
     masterConfig.batteryConfig.vbatscale = 20;
 #else
     masterConfig.serialConfig.portConfigs[1].functionMask = FUNCTION_RX_SERIAL;
