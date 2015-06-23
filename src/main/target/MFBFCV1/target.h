@@ -50,8 +50,9 @@
 // PB13 26 SPI2_SCK
 // PB12 25 SPI2_NSS
 
-#define USE_SPI
-#define USE_SPI_DEVICE_2
+// SPI Disabled, no flash onboard + using SPI controlled vTX
+//#define USE_SPI
+//#define USE_SPI_DEVICE_2
 
 #define NAZE_SPI_INSTANCE     SPI2
 #define NAZE_SPI_CS_GPIO      GPIOB
@@ -174,6 +175,7 @@
 #define AUTOTUNE
 #define USE_SERVOS
 #define USE_CLI
+#define BRUSHED_MOTORS
 
 #define SPEKTRUM_BIND
 // USART2, PA3
@@ -184,4 +186,4 @@
 
 // Hardware bind plug at PB5 (Pin 41)
 #define BINDPLUG_PORT  GPIOB
-#define BINDPLUG_PIN   Pin_5
+#define BINDPLUG_PIN   Pin_511
