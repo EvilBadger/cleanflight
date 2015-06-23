@@ -324,6 +324,8 @@ NAZE_SRC	 = startup_stm32f10x_md_gcc.S \
 
 ALIENWIIF1_SRC	 = $(NAZE_SRC)
 
+MFBFCV1_SRC	     = $(NAZE_SRC)
+
 EUSTM32F103RC_SRC	 = startup_stm32f10x_hd_gcc.S \
 		   drivers/accgyro_adxl345.c \
 		   drivers/accgyro_bma280.c \

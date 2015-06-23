@@ -18,7 +18,7 @@
 #pragma once
 
 #define TARGET_BOARD_IDENTIFIER "MFBFCV1" // MultiFlite Brushed FC V1
-#define USE_HARDWARE_REVISION_DETECTION
+//#define USE_HARDWARE_REVISION_DETECTION
 
 #define BOARD_HAS_VOLTAGE_DIVIDER
 
@@ -110,7 +110,7 @@
 
 #define MAG_HMC5883_ALIGN CW180_DEG
 
-#define SONAR
+//#define SONAR
 #define BEEPER
 #define LED0
 #define LED1
