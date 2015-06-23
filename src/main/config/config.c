@@ -517,9 +517,10 @@ static void resetConf(void)
     // alternative defaults settings for ALIENWIIF1, ALIENWIIF3 and MFBFCV1 targets
 #ifdef MFBFCV1
     masterConfig.batteryConfig.vbatscale = 15;
-    masterConfig.serialConfig.portConfigs[2].functionMask = FUNCTION_RX_SERIAL;
 	featureSet(FEATURE_RX_SERIAL);
-#endif	
+    masterConfig.serialConfig.portConfigs[2].functionMask = FUNCTION_RX_SERIAL;
+#endif
+
 #ifdef ALIENWII32
     featureSet(FEATURE_RX_SERIAL);
     featureSet(FEATURE_MOTOR_STOP);
