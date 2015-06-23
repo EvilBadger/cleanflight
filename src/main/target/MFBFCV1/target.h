@@ -186,4 +186,4 @@
 
 // Hardware bind plug at PB5 (Pin 41)
 #define BINDPLUG_PORT  GPIOB
-#define BINDPLUG_PIN   Pin_511
+#define BINDPLUG_PIN   Pin_5
