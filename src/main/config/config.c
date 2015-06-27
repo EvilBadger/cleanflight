@@ -245,6 +245,8 @@ void resetTelemetryConfig(telemetryConfig_t *telemetryConfig)
 void resetBatteryConfig(batteryConfig_t *batteryConfig)
 {
     batteryConfig->vbatscale = VBAT_SCALE_DEFAULT;
+    batteryConfig->vbatresdivval = VBAT_RESDIVVAL_DEFAULT;
+    batteryConfig->vbatresdivmultiplier = VBAT_RESDIVMULTIPLIER_DEFAULT;
     batteryConfig->vbatmaxcellvoltage = 43;
     batteryConfig->vbatmincellvoltage = 33;
     batteryConfig->vbatwarningcellvoltage = 35;
@@ -516,7 +518,10 @@ static void resetConf(void)
 
     // alternative defaults settings for ALIENWIIF1, ALIENWIIF3 and MFBFCV1 targets
 #ifdef MFBFCV1
-    masterConfig.batteryConfig.vbatscale = 15;
+    masterConfig.batteryConfig.vbatscale = 92;
+    masterConfig.batteryConfig.vbatresdivval = 15;
+    masterConfig.batteryConfig.vbatresdivmultiplier = 4;
+    masterConfig.batteryConfig.vbatmaxcellvoltage = 50;
 	featureSet(FEATURE_RX_SERIAL);
     masterConfig.serialConfig.portConfigs[2].functionMask = FUNCTION_RX_SERIAL;
 #endif
