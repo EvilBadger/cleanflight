@@ -538,12 +538,12 @@ static void resetConf(void)
     masterConfig.motor_pwm_rate = 32000;
     masterConfig.looptime = 2000;
     currentProfile->pidProfile.pidController = 5;
-    currentProfile->pidProfile.P8[ROLL] = 20;
-    currentProfile->pidProfile.P8[PITCH] = 20;
+    currentProfile->pidProfile.P8[ROLL] = 31;
+    currentProfile->pidProfile.P8[PITCH] = 31;
     masterConfig.failsafeConfig.failsafe_delay = 2;
     masterConfig.failsafeConfig.failsafe_off_delay = 0;
     masterConfig.failsafeConfig.failsafe_throttle = 1000;
-    currentControlRateProfile->rcRate8 = 100;
+    currentControlRateProfile->rcRate8 = 120;
     currentControlRateProfile->rates[FD_PITCH] = 05;
     currentControlRateProfile->rates[FD_ROLL] = 05;
     currentControlRateProfile->rates[FD_YAW] = 30;
