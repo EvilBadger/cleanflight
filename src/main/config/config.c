@@ -516,14 +516,37 @@ static void resetConf(void)
     masterConfig.blackbox_rate_denom = 1;
 #endif
 
-    // alternative defaults settings for ALIENWIIF1, ALIENWIIF3 and MFNBFC targets
+    // alternative defaults settings for ALIENWIIF1, ALIENWIIF3, and MFNBFC targets
 #ifdef MFNBFC
+    featureSet(FEATURE_RX_SERIAL);
+    featureSet(FEATURE_MOTOR_STOP);
+    featureSet(FEATURE_VBAT);
+
     masterConfig.batteryConfig.vbatscale = 92;
     masterConfig.batteryConfig.vbatresdivval = 15;
     masterConfig.batteryConfig.vbatresdivmultiplier = 4;
-    masterConfig.batteryConfig.vbatmaxcellvoltage = 50;
-	featureSet(FEATURE_RX_SERIAL);
-    masterConfig.serialConfig.portConfigs[2].functionMask = FUNCTION_RX_SERIAL;
+    masterConfig.batteryConfig.vbatmaxcellvoltage = 52;
+    masterConfig.batteryConfig.vbatmincellvoltage = 33;
+    masterConfig.batteryConfig.vbatwarningcellvoltage = 33;
+    
+    masterConfig.serialConfig.portConfigs[1].functionMask = FUNCTION_RX_SERIAL;
+    masterConfig.rxConfig.serialrx_provider = 1;
+    masterConfig.rxConfig.spektrum_sat_bind = 5;
+    parseRcChannels("TAER1234", &masterConfig.rxConfig);
+    masterConfig.escAndServoConfig.minthrottle = 1000;
+    masterConfig.escAndServoConfig.maxthrottle = 2000;
+    masterConfig.motor_pwm_rate = 32000;
+    masterConfig.looptime = 2000;
+    currentProfile->pidProfile.pidController = 5;
+    currentProfile->pidProfile.P8[ROLL] = 20;
+    currentProfile->pidProfile.P8[PITCH] = 20;
+    masterConfig.failsafeConfig.failsafe_delay = 2;
+    masterConfig.failsafeConfig.failsafe_off_delay = 0;
+    masterConfig.failsafeConfig.failsafe_throttle = 1000;
+    currentControlRateProfile->rcRate8 = 100;
+    currentControlRateProfile->rates[FD_PITCH] = 05;
+    currentControlRateProfile->rates[FD_ROLL] = 05;
+    currentControlRateProfile->rates[FD_YAW] = 30;
 #endif
 
 #ifdef ALIENWII32
