@@ -17,7 +17,7 @@
 
 #pragma once
 
-#define TARGET_BOARD_IDENTIFIER "MFBFCV1" // MultiFlite Brushed FC V1
+#define TARGET_BOARD_IDENTIFIER "MFNBFC" // MultiFlite Nano Brushed FC
 //#define USE_HARDWARE_REVISION_DETECTION
 
 #define BOARD_HAS_VOLTAGE_DIVIDER

@@ -516,8 +516,8 @@ static void resetConf(void)
     masterConfig.blackbox_rate_denom = 1;
 #endif
 
-    // alternative defaults settings for ALIENWIIF1, ALIENWIIF3 and MFBFCV1 targets
-#ifdef MFBFCV1
+    // alternative defaults settings for ALIENWIIF1, ALIENWIIF3 and MFNBFC targets
+#ifdef MFNBFC
     masterConfig.batteryConfig.vbatscale = 92;
     masterConfig.batteryConfig.vbatresdivval = 15;
     masterConfig.batteryConfig.vbatresdivmultiplier = 4;
