@@ -530,11 +530,11 @@ static void resetConf(void)
     masterConfig.batteryConfig.vbatwarningcellvoltage = 33;
     
     masterConfig.serialConfig.portConfigs[1].functionMask = FUNCTION_RX_SERIAL;
-    masterConfig.rxConfig.serialrx_provider = 1;
+    masterConfig.rxConfig.serialrx_provider = 0;
     masterConfig.rxConfig.spektrum_sat_bind = 5;
     parseRcChannels("TAER1234", &masterConfig.rxConfig);
     masterConfig.escAndServoConfig.minthrottle = 1000;
-    masterConfig.escAndServoConfig.maxthrottle = 2000;
+    masterConfig.escAndServoConfig.maxthrottle = 2500;
     masterConfig.motor_pwm_rate = 32000;
     masterConfig.looptime = 2000;
     currentProfile->pidProfile.pidController = 5;
