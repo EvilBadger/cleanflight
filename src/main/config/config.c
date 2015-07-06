@@ -516,6 +516,12 @@ static void resetConf(void)
     masterConfig.blackbox_rate_denom = 1;
 #endif
 
+#ifdef USE_VTX
+    featureSet(FEATURE_VTX);
+    masterConfig.vtx_band = 4;
+    masterConfig.vtx_channel = 1;
+#endif
+
     // alternative defaults settings for ALIENWIIF1, ALIENWIIF3, and MFNBFC targets
 #ifdef MFNBFC
     featureSet(FEATURE_RX_SERIAL);

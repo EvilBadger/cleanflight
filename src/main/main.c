@@ -88,6 +88,10 @@
 #include "hardware_revision.h"
 #endif
 
+#ifdef USE_VTX
+#include "drivers/vtx_rtc6705.h"
+#endif
+
 #include "build_config.h"
 #include "debug.h"
 
@@ -299,7 +303,6 @@ void init(void)
     initInverter();
 #endif
 
-
 #ifdef USE_SPI
     spiInit(SPI1);
     spiInit(SPI2);
@@ -492,6 +495,13 @@ void init(void)
 
 #ifdef CJMCU
     LED2_ON;
+#endif
+
+#ifdef USE_VTX
+    if (feature(FEATURE_VTX)) {
+        rtc6705_init();
+        rtc6705_setchannel(masterConfig.vtx_band-1, masterConfig.vtx_channel-1);
+    }
 #endif
 
     // Latch active features AGAIN since some may be modified by init().

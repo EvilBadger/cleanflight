@@ -96,6 +96,11 @@ typedef struct master_t {
     uint8_t blackbox_device;
 #endif
 
+#ifdef USE_VTX
+    uint8_t vtx_band;
+    uint8_t vtx_channel;
+#endif
+
     uint8_t magic_ef;                       // magic number, should be 0xEF
     uint8_t chk;                            // XOR checksum
 } master_t;
