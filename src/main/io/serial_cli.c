@@ -456,8 +456,10 @@ const clivalue_t valueTable[] = {
 #endif
 
 #ifdef USE_VTX
-    { "vtx_band",                   VAR_UINT8  | MASTER_VALUE,  &masterConfig.vtx_band, 1, 4 },
+    { "vtx_band",                   VAR_UINT8  | MASTER_VALUE,  &masterConfig.vtx_band, 1, 5 },
     { "vtx_channel",                VAR_UINT8  | MASTER_VALUE,  &masterConfig.vtx_channel, 1, 8 },
+    { "vtx_mode",                   VAR_UINT8  | MASTER_VALUE,  &masterConfig.vtx_mode, 0, 1 },
+    { "vtx_mhz",                    VAR_UINT16 | MASTER_VALUE,  &masterConfig.vtx_mhz, 5600, 5950 },
 #endif
 };
 

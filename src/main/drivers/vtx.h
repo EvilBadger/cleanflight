@@ -19,7 +19,4 @@
 
 #include <stdint.h>
 
-typedef struct vtx_t {
-    uint8_t band;
-    uint8_t channel;
-} vtx_t;
+//TODO there should probabaly be a config struct here..

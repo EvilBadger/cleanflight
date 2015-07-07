@@ -518,8 +518,10 @@ static void resetConf(void)
 
 #ifdef USE_VTX
     featureSet(FEATURE_VTX);
-    masterConfig.vtx_band = 4;
-    masterConfig.vtx_channel = 1;
+    masterConfig.vtx_band = 4;    //Fatshark/Airwaves
+    masterConfig.vtx_channel = 1; //CH1
+    masterConfig.vtx_mode = 0;    //CH+BAND mode
+    masterConfig.vtx_mhz = 5740;  //F0
 #endif
 
     // alternative defaults settings for ALIENWIIF1, ALIENWIIF3, and MFNBFC targets

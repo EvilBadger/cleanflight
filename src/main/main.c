@@ -500,7 +500,11 @@ void init(void)
 #ifdef USE_VTX
     if (feature(FEATURE_VTX)) {
         rtc6705_init();
-        rtc6705_setchannel(masterConfig.vtx_band-1, masterConfig.vtx_channel-1);
+        if (masterConfig.vtx_mode == 0) {
+            rtc6705_setchannel(masterConfig.vtx_band-1, masterConfig.vtx_channel-1);
+        } else {
+            rtc6705_setfreq(masterConfig.vtx_mhz);
+        }
     }
 #endif
 

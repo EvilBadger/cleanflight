@@ -22,5 +22,4 @@
 
 bool rtc6705_init();
 void rtc6705_setchannel(uint8_t band, uint8_t channel);
-
-const vtx_t* rtc6705_getVtx();
+void rtc6705_setfreq(uint16_t freq);

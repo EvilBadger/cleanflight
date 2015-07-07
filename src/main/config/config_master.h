@@ -97,8 +97,10 @@ typedef struct master_t {
 #endif
 
 #ifdef USE_VTX
-    uint8_t vtx_band;
-    uint8_t vtx_channel;
+    uint8_t vtx_band; //1=A, 2=B, 3=E, 4=F(Airwaves/Fatshark)
+    uint8_t vtx_channel; //1-8
+    uint8_t vtx_mode; //0=ch+band 1=mhz
+    uint16_t vtx_mhz; //5740
 #endif
 
     uint8_t magic_ef;                       // magic number, should be 0xEF
