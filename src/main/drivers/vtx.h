@@ -19,4 +19,4 @@
 
 #include <stdint.h>
 
-//TODO there should probabaly be a config struct here..
+//TODO there could probably be a config struct here.. room for expansion anyway

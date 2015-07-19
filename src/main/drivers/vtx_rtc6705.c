@@ -67,16 +67,18 @@
 #define RTC6705_SET_R7 0x8F8711 //5880
 #define RTC6705_SET_R8 0x9072B1 //5917
 
-#define RTC6705_SET_R  400     //Reference
+#define RTC6705_SET_R  400     //Reference clock
 #define RTC6705_SET_FDIV 1024  //128*(fosc/1000000)
-#define RTC6705_SET_NDIV 16    //Remainder divider to get A
+#define RTC6705_SET_NDIV 16    //Remainder divider to get 'A' part of equation
 #define RTC6705_SET_WRITE 0x11 //10001b to write to register
-#define RTC6705_SET_DIVMULT 1000000 //Division value (to fit into a uint32_t)
+#define RTC6705_SET_DIVMULT 1000000 //Division value (to fit into a uint32_t) (Hz to MHz)
 
 #define RTC6705_BAND_MIN    1
 #define RTC6705_BAND_MAX    5
 #define RTC6705_CHANNEL_MIN 1
 #define RTC6705_CHANNEL_MAX 8
+#define RTC6705_FREQ_MIN    5600
+#define RTC6705_FREQ_MAX    5950
 
 #define DISABLE_RTC6705 GPIO_SetBits(RTC6705_CS_GPIO,   RTC6705_CS_PIN)
 #define ENABLE_RTC6705  GPIO_ResetBits(RTC6705_CS_GPIO, RTC6705_CS_PIN)
@@ -105,6 +107,8 @@ static bool rtc6705_isReady()
 
 /**
  * Reverse a uint32_t (LSB to MSB)
+ * This is easier for when generating the frequency to then
+ * reverse the bits afterwards
  */
 static uint32_t reverse32(uint32_t in) {
     uint32_t out = 0;
@@ -151,22 +155,25 @@ static void rtc6705_transfer(uint32_t command)
  */
 void rtc6705_setchannel(uint8_t band, uint8_t channel)
 {
-    band = band <= RTC6705_BAND_MIN-1 ? RTC6705_BAND_MIN-1 : band >= RTC6705_BAND_MAX-1 ? RTC6705_BAND_MAX-1 : band; //Clip value between MIN and MAX
-    channel = channel <= RTC6705_CHANNEL_MIN-1 ? RTC6705_CHANNEL_MIN-1 : channel >= RTC6705_CHANNEL_MAX-1 ? RTC6705_CHANNEL_MAX-1 : channel; //Clip value between MIN and MAX
+    band = constrain(band, RTC6705_BAND_MIN, RTC6705_BAND_MAX);
+    channel = constrain(channnel, RTC6705_CHANNEL_MIN, RTC6705_CHANNEL_MAX);
 
     rtc6705_transfer(RTC6705_SET_HEAD);
-    rtc6705_transfer(channelArray[band][channel]);
+    rtc6705_transfer(channelArray[band-1][channel-1]);
 }
 
 /**
  * Set a freq in mhz
+ * Formula derived from datasheet
  */
 void rtc6705_setfreq(uint16_t freq)
 {
+    freq = constrain(freq, RTC6705_FREQ_MIN, RTC6705_FREQ_MAX);
+
     uint32_t val_hex = 0;
 
-    uint32_t val_a = ((((uint64_t)freq*(uint64_t)RTC6705_SET_DIVMULT*(uint64_t)RTC6705_SET_R)/(uint64_t)RTC6705_SET_DIVMULT) % RTC6705_SET_FDIV) / RTC6705_SET_NDIV;
-    uint32_t val_n = (((uint64_t)freq*(uint64_t)RTC6705_SET_DIVMULT*(uint64_t)RTC6705_SET_R)/(uint64_t)RTC6705_SET_DIVMULT) / RTC6705_SET_FDIV;
+    uint32_t val_a = ((((uint64_t)freq*(uint64_t)RTC6705_SET_DIVMULT*(uint64_t)RTC6705_SET_R)/(uint64_t)RTC6705_SET_DIVMULT) % RTC6705_SET_FDIV) / RTC6705_SET_NDIV; //Casts required to make sure correct math (large numbers)
+    uint32_t val_n = (((uint64_t)freq*(uint64_t)RTC6705_SET_DIVMULT*(uint64_t)RTC6705_SET_R)/(uint64_t)RTC6705_SET_DIVMULT) / RTC6705_SET_FDIV; //Casts required to make sure correct math (large numbers)
 
     val_hex |= RTC6705_SET_WRITE;
     val_hex |= (val_a << 5);
