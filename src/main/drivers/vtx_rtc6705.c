@@ -20,7 +20,7 @@
 #include <stdint.h>
 
 #include "platform.h"
-#include "maths.h"
+#include "common/maths.h"
 
 #include "drivers/vtx_rtc6705.h"
 #include "drivers/bus_spi.h"
