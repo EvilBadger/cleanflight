@@ -20,6 +20,7 @@
 #include <stdint.h>
 
 #include "platform.h"
+#include "maths.h"
 
 #include "drivers/vtx_rtc6705.h"
 #include "drivers/bus_spi.h"
@@ -156,7 +157,7 @@ static void rtc6705_transfer(uint32_t command)
 void rtc6705_setchannel(uint8_t band, uint8_t channel)
 {
     band = constrain(band, RTC6705_BAND_MIN, RTC6705_BAND_MAX);
-    channel = constrain(channnel, RTC6705_CHANNEL_MIN, RTC6705_CHANNEL_MAX);
+    channel = constrain(channel, RTC6705_CHANNEL_MIN, RTC6705_CHANNEL_MAX);
 
     rtc6705_transfer(RTC6705_SET_HEAD);
     rtc6705_transfer(channelArray[band-1][channel-1]);

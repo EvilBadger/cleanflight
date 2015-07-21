@@ -530,7 +530,7 @@ static void resetConf(void)
     featureSet(FEATURE_MOTOR_STOP);
     featureSet(FEATURE_VBAT);
 
-    masterConfig.batteryConfig.vbatscale = 92;
+    masterConfig.batteryConfig.vbatscale = 150;
     masterConfig.batteryConfig.vbatresdivval = 15;
     masterConfig.batteryConfig.vbatresdivmultiplier = 4;
     masterConfig.batteryConfig.vbatmaxcellvoltage = 52;
