@@ -18,7 +18,6 @@
 #pragma once
 
 #define TARGET_BOARD_IDENTIFIER "MFNBFC" // MultiFlite Nano Brushed FC
-//#define USE_HARDWARE_REVISION_DETECTION
 
 #define BOARD_HAS_VOLTAGE_DIVIDER
 
@@ -50,29 +49,22 @@
 // PB13 26 SPI2_SCK
 // PB12 25 SPI2_NSS
 
-// SPI Disabled, no flash onboard + using SPI controlled vTX
 #define USE_SPI
 #define USE_SPI_DEVICE_2
 
-#define NAZE_SPI_INSTANCE     SPI2
-#define NAZE_SPI_CS_GPIO      GPIOB
-#define NAZE_SPI_CS_PIN       GPIO_Pin_12
+#define MFNBFC_SPI_INSTANCE     SPI2
+#define MFNBFC_SPI_CS_GPIO      GPIOB
+#define MFNBFC_SPI_CS_PIN       GPIO_Pin_12
 
-// We either have this 16mbit flash chip on SPI or the MPU6500 acc/gyro depending on board revision:
-#define M25P16_CS_GPIO        NAZE_SPI_CS_GPIO
-#define M25P16_CS_PIN         NAZE_SPI_CS_PIN
-#define M25P16_SPI_INSTANCE   NAZE_SPI_INSTANCE
+#define M25P16_CS_GPIO        MFNBFC_SPI_CS_GPIO
+#define M25P16_CS_PIN         MFNBFC_SPI_CS_PIN
+#define M25P16_SPI_INSTANCE   MFNBFC_SPI_INSTANCE
 
-#define MPU6500_CS_GPIO       NAZE_SPI_CS_GPIO
-#define MPU6500_CS_PIN        NAZE_SPI_CS_PIN
-#define MPU6500_SPI_INSTANCE  NAZE_SPI_INSTANCE
-
-#define RTC6705_CS_GPIO       NAZE_SPI_CS_GPIO
-#define RTC6705_CS_PIN        NAZE_SPI_CS_PIN
-#define RTC6705_SPI_INSTANCE  NAZE_SPI_INSTANCE
+#define RTC6705_CS_GPIO       MFNBFC_SPI_CS_GPIO
+#define RTC6705_CS_PIN        MFNBFC_SPI_CS_PIN
+#define RTC6705_SPI_INSTANCE  MFNBFC_SPI_INSTANCE
 
 #define USE_VTX
-
 //#define USE_FLASHFS
 
 //#define USE_FLASH_M25P16
@@ -86,31 +78,17 @@
 #define USE_MAG_DATA_READY_SIGNAL
 
 #define GYRO
-//#define USE_GYRO_MPU3050
 #define USE_GYRO_MPU6050
-//#define USE_GYRO_SPI_MPU6500
 
-
-//#define GYRO_MPU3050_ALIGN CW0_DEG
 #define GYRO_MPU6050_ALIGN CW0_DEG
-//#define GYRO_SPI_MPU6500_ALIGN CW0_DEG
 
 #define ACC
-//#define USE_ACC_ADXL345
-//#define USE_ACC_BMA280
-//#define USE_ACC_MMA8452
 #define USE_ACC_MPU6050
-//#define USE_ACC_SPI_MPU6500
 
-//#define ACC_ADXL345_ALIGN CW270_DEG
 #define ACC_MPU6050_ALIGN CW0_DEG
-//#define ACC_MMA8452_ALIGN CW90_DEG
-//#define ACC_BMA280_ALIGN CW0_DEG
-//#define ACC_SPI_MPU6500_ALIGN CW0_DEG
 
 #define BARO
 #define USE_BARO_MS5611
-//#define USE_BARO_BMP085
 
 #define MAG
 #define USE_MAG_HMC5883
@@ -146,17 +124,17 @@
 
 #define USE_ADC
 
-#define CURRENT_METER_ADC_GPIO      GPIOB         //TODO Define pin use for current meter in later revision
+#define CURRENT_METER_ADC_GPIO      GPIOA
 #define CURRENT_METER_ADC_GPIO_PIN  GPIO_Pin_1
-#define CURRENT_METER_ADC_CHANNEL   ADC_Channel_9
+#define CURRENT_METER_ADC_CHANNEL   ADC_Channel_1
 
 #define VBAT_ADC_GPIO               GPIOA
 #define VBAT_ADC_GPIO_PIN           GPIO_Pin_4
 #define VBAT_ADC_CHANNEL            ADC_Channel_4
 
 #define RSSI_ADC_GPIO               GPIOA
-#define RSSI_ADC_GPIO_PIN           GPIO_Pin_1
-#define RSSI_ADC_CHANNEL            ADC_Channel_1
+#define RSSI_ADC_GPIO_PIN           GPIO_Pin_5
+#define RSSI_ADC_CHANNEL            ADC_Channel_5
 
 #define EXTERNAL1_ADC_GPIO          GPIOA
 #define EXTERNAL1_ADC_GPIO_PIN      GPIO_Pin_5
@@ -185,4 +163,3 @@
 // Hardware bind plug at PB5 (Pin 41)
 #define BINDPLUG_PORT  GPIOB
 #define BINDPLUG_PIN   Pin_5
-
