@@ -14,6 +14,13 @@
  * You should have received a copy of the GNU General Public License
  * along with Cleanflight.  If not, see <http://www.gnu.org/licenses/>.
  */
+ 
+ /*
+  * Author: Giles Burgess (giles@multiflite.co.uk)
+  *
+  * This source code is provided as is and can be used/modified so long
+  * as this header is maintained with the file at all times.
+  */
 
 #include <stdlib.h>
 #include <stdbool.h>
