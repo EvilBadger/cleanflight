@@ -530,7 +530,7 @@ static void resetConf(void)
     featureSet(FEATURE_MOTOR_STOP);
     featureSet(FEATURE_VBAT);
 
-    masterConfig.batteryConfig.vbatscale = 150;
+    masterConfig.batteryConfig.vbatscale = 164;
     masterConfig.batteryConfig.vbatresdivval = 15;
     masterConfig.batteryConfig.vbatresdivmultiplier = 4;
     masterConfig.batteryConfig.vbatmaxcellvoltage = 52;
@@ -542,7 +542,7 @@ static void resetConf(void)
     masterConfig.rxConfig.spektrum_sat_bind = 5;
     parseRcChannels("TAER1234", &masterConfig.rxConfig);
     masterConfig.escAndServoConfig.minthrottle = 1000;
-    masterConfig.escAndServoConfig.maxthrottle = 2500;
+    masterConfig.escAndServoConfig.maxthrottle = 2000;
     masterConfig.motor_pwm_rate = 32000;
     masterConfig.looptime = 2000;
     currentProfile->pidProfile.pidController = 3;
